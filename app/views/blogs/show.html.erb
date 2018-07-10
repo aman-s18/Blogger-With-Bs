@@ -1,0 +1,47 @@
+
+<h1>Your Blog Created Sucessfully</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog.try(:title) %>
+</p>
+<p>
+  <strong> Category:</strong>
+  <% if @blog.category.present? %>
+  <%= Category.find(@blog.category).name %>
+  <% end %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @blog.image_url(:medium).to_s %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @blog.try(:description) %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog.title %>
+</p>
+ 
+
+ 
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @blog, @blog.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+ 
+<%= button_to 'Edit', edit_blog_path, :method => 'get' %> |
+<%= button_to "Back", blogs_path, :method => 'get' %>
+

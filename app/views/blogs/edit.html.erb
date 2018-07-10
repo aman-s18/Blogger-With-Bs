@@ -1,0 +1,44 @@
+
+<h1>Edit blog</h1>
+ 
+<%= form_with(model: @blog, local: true) do |form| %>
+ 
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@blog.errors.count, "error") %> prohibited
+        this blog from being saved:
+      </h2>
+      <ul>
+        <% @blog.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :Category %><br>
+    <%= form.select(:category, Category.all.collect {|u| [u.name, u.id]}, :prompt => 'Select Category') %>
+  </p>
+
+  <p>
+    <%= form.label :Upload_Image %><br>
+    <%= form.file_field :image, size: "150pxx10px", alt: "Edit Entry" %>
+  </p>
+ 
+  <p>
+    <%= form.label :Description %><br>
+    <%= form.text_area :description, :cols => 30, :rows => 10 %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', blogs_path %>
