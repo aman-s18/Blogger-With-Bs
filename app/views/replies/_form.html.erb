@@ -1,0 +1,9 @@
+
+<%= form_with(model: [@blog, @comments, @comments.replies.build ], local: true) do |f| %>
+   <%= f.hidden_field :comment_id,  :value=> comment.id %>
+   <%= f.text_field :body %>
+   <%= f.submit %>
+   <%end%>
+
+
+

@@ -1,7 +1,21 @@
 <h1>Create A New Blog</h1>
-<table class=".table-condensed">
+
 <%= form_with scope: :blog, url: blogs_path, local: true do |form| %>
-<p>
+<table class=".table-condensed">
+<% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@blog.errors.count, "error") %> prohibited
+        this blog from being saved:
+      </h2>
+      <ul>
+        <% @blog.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
   </p>
@@ -20,7 +34,8 @@
     <%= form.text_area :description, :cols => 50, :rows => 10 %>
   </p>
   <p>
-<%= form.submit %>
-</p>
-<%end%>
-</table>
+    <%= form.submit %>
+  </p>
+  </table>
+  <%end%>
+

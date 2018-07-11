@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   get 'blog/new'
   devise_for :users
   resources :blogs
-  resources :blogs do
-  resources :comments
-end
+ 	resources :blogs do
+  	resources :comments do
+  		resources :replies
+		end
+	end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
