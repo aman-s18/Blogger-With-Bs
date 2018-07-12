@@ -15,3 +15,10 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.nested_messages {
+  margin-left: 30px;
+}
+
+.nested_messages .nested_messages .nested_messages .nested_messages {
+  margin-left: 0;
+}

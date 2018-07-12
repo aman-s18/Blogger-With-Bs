@@ -1,22 +1,37 @@
-
+<table border="2px">
+<td>
 <p>
-	<strong>Comment:</strong>
-	<%= comment.body %><br>
-		<%= link_to 'Destroy Comment', [comment.blog, comment],
-			     method: :delete,
-			     data: { confirm: 'Are you sure?' } %><br><br>
-
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
 </p>
-<h2> reply a comment</h2>
-<% @replies= Reply.where(:comment_id=> comment.id) %>
+ 
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+	</p>
+	
+	<%= link_to 'Destroy Comment', [comment.blog, comment],
+			   method: :delete,
+			   data: { confirm: 'Are you sure?' } %> |
+			   <%= link_to "Reply", new_blog_comment_reply_path(comment.blog, comment) %> 
+	</p>
 
-<%@replies.each do |reply|%>
+	<h3> reply a comment</h3>
+		<% @replies= Reply.where(:comment_id=> comment.id) %>
+		<%@replies.each do |reply|%>
   <p>
-  <strong>Reply:</strong>
-  <%=reply.body%></p>
+  	<strong>Reply:</strong>
+  	<%=reply.body%>
+  	</p>
 <%end%>
+</td></table>
+<%= render :partial => 'replies/form' %>
+
+
+<%#= render 'replies/form', :comment=> @comment %>
+
 <%# @blog = Blog.find(comment.blog_id)%>
-<%= render 'replies/form', locals: { :comment=> comment, :blog => comment.blog }  %>
+<%#= render 'replies/form', locals: { :comment=> comment, :blog => comment.blog }  %>
  
  
 
