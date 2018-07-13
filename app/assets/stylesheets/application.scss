@@ -19,6 +19,43 @@
   margin-left: 30px;
 }
 
-.nested_messages .nested_messages .nested_messages .nested_messages {
-  margin-left: 0;
+
+.navbar {
+    overflow: hidden;
+    background-color:#F08080;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
 }
+.navbar a {
+    float: left;
+    display: block;
+    color: 	#F08080;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background: #ddd;
+    color: black;
+}
+.main {
+    margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+.footer {
+
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: powderblue;
+   color: white;
+   text-align: center;
+}
+
+  body {
+    background-image: url("blog-1.jpg");
+    background-size: cover;
+}
+
+

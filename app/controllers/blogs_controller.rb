@@ -1,8 +1,13 @@
 
 class BlogsController < ApplicationController
 
-  def index
+  def index    
     @blogs = Blog.all
+  if params[:search]
+    @blogs = Blog.search(params[:search]).order("created_at DESC")
+  else
+    @blogs = Blog.all.order("created_at DESC")
+  end
   end
  
   def show

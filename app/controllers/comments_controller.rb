@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  
 
   def new
     @comment = Comment.new(:blog_id => params[:blog_id])

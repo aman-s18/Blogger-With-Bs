@@ -1,7 +1,7 @@
 <%#=byebug%>
-<%= form_for([@blog, @comment, @reply]) do |f| %>
+<%= form_for([blog, comment, reply]) do |f| %>
 
-   <%= f.hidden_field :comment_id,  :value=> @comment.id %>
+   <%= f.hidden_field :comment_id,  :value=> comment.id %>
    <%= f.text_field :body %>
    <%= f.submit %>
    <%end%>

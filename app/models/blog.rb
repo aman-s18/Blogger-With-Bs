@@ -8,6 +8,9 @@ mount_uploader :image, ImageUploader
 
 	  validates :title, presence: true,
 	                    length: { minimum: 3 }
+	                    def self.search(search)
+  where("title LIKE ?", "%#{search}%") 
+end     
 	  
 
 end

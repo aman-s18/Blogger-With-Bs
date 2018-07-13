@@ -27,7 +27,12 @@ or <%= link_to "sign in", new_user_session_path %>
     <%= yield %>
     </td>
     </table>
+     <%= form_tag(blogs_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Blog" %>
+    <%= submit_tag "Search", :name => nil %>
+    <% end %>
+    
 
-    <marquee><h1><i><b> Welcome To The  Blogger.com</b></i></h1></marquee>
+    
   </body>
 </html>

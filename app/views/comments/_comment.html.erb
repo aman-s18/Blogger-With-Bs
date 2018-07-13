@@ -4,17 +4,21 @@
   <strong>Commenter:</strong>
   <%= comment.commenter %>
 </p>
+  	
  
 <p>
   <strong>Comment:</strong>
   <%= comment.body %>
 	</p>
+
+
 	
 	<%= link_to 'Destroy Comment', [comment.blog, comment],
 			   method: :delete,
 			   data: { confirm: 'Are you sure?' } %> |
 			   <%= link_to "Reply", new_blog_comment_reply_path(comment.blog, comment) %> 
 	</p>
+	<%= render partial: "likes/like", locals: {comment: comment } %>
 
 	<h3> reply a comment</h3>
 		<% @replies= Reply.where(:comment_id=> comment.id) %>
@@ -23,9 +27,13 @@
   	<strong>Reply:</strong>
   	<%=reply.body%>
   	</p>
+
 <%end%>
+<%= render :partial => 'replies/form', locals: { blog:  @blog, comment: comment, reply: comment.replies.new} %>
+
 </td></table>
-<%= render :partial => 'replies/form' %>
+
+
 
 
 <%#= render 'replies/form', :comment=> @comment %>
@@ -33,9 +41,4 @@
 <%# @blog = Blog.find(comment.blog_id)%>
 <%#= render 'replies/form', locals: { :comment=> comment, :blog => comment.blog }  %>
  
- 
 
-
-
-
-	
