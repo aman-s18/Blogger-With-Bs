@@ -23,6 +23,7 @@ class BlogsController < ApplicationController
   end
  
   def create
+    params[:blog][:title] = "#{params[:blog][:country_code]}#{params[:blog][:title]}"
     @blog = Blog.new(blog_params)
  
     if @blog.save

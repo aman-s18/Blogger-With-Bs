@@ -67,4 +67,4 @@ gem 'jquery-rails'
 gem 'mini_magick','~>4.3'
 #gem 'rmagick'
 gem 'activeadmin'
-
+gem 'country_select'

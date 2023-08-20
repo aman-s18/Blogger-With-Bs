@@ -54,8 +54,17 @@
     </div>
   <% end %>
   <p>
-    <%= form.label :title %><br>
+    <%= form.label :phone_number %><br>
+    <select name="blog[country_code]">
+      <%# You can use name instead of alpha3 it will show you  %>
+      <% ISO3166::Country.countries.sort_by(&:name).each do |country| %>
+        <option value="+<%= country.country_code%>">
+          <%= "+#{country.country_code} #{country.alpha3}" %>
+        </option>
+      <%end%>
     <%= form.text_field :title %>
+    </select>
+    <%#= select_tag :country, options_from_collection_for_select(ISO3166::Country.countries.sort_by(&:name), 'country_code', ('alpha3')) %>
   </p>
   <p>
     <%= form.label :Category %><br><br>
